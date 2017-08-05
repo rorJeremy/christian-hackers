@@ -7,8 +7,8 @@ class SearchBar extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
   }
 
-  onInputChange() {
-  	
+  onInputChange(event) {
+  	console.log(event.target.value);
   }
 
   render() {
