@@ -8,7 +8,7 @@ class SearchBar extends React.Component {
 
   render() {
 	  return (
-	    <input />
+	    <input onChange={this.onInputChange} />
 	  )
   }
 }
