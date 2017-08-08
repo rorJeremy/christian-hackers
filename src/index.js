@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      events: [],
+      events: [{key: "1", title: "event1", description: "the first event"}, {key: "2", title: "event2", description: "the second event"}],
       selectedEvent: null
     };
   }
@@ -19,7 +19,7 @@ class App extends React.Component {
 	    <div>
 	      <h2>Christian Hackers</h2>
 	      <SearchBar />
-	      <EventList />
+	      <EventList events={this.state.events} />
 	    </div>
 	  )
 	}
