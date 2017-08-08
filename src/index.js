@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SearchBar from './components/search_bar';
+import EventList from './components/event_list';
 // import registerServiceWorker from './registerServiceWorker';
 
 class App extends React.Component {
@@ -18,6 +19,7 @@ class App extends React.Component {
 	    <div>
 	      <h2>Christian Hackers</h2>
 	      <SearchBar />
+	      <EventList />
 	    </div>
 	  )
 	}
