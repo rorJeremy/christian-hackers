@@ -7,6 +7,7 @@ function EventList(props) {
       {props.events.map((event, index) => (
         <EventDetail
           key={event.key}
+          event={event}
         />
       ))}    
     </ul>
