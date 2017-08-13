@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import EventDetail from './event_detail';
+import EventListItem from './event_list_item';
 
 function EventList(props) {
   return (
     <ul>
       {props.events.map((event, index) => (
-        <EventDetail
+        <EventListItem
           key={event.key}
           event={event}
         />
