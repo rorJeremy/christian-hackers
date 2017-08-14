@@ -6,6 +6,7 @@ function EventList(props) {
     <ul>
       {props.events.map((event, index) => (
         <EventListItem
+        	onEventSelect={props.onEventSelect}
           key={event.key}
           event={event}
         />

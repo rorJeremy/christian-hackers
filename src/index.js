@@ -21,7 +21,10 @@ class App extends React.Component {
 	      <h2>Christian Hackers</h2>
 	      <SearchBar />
 	      <EventDetail event={this.state.selectedEvent} />
-	      <EventList events={this.state.events} />
+	      <EventList 
+	      	onEventSelect={selectedEvent => this.setState({ selectedEvent })}
+	      	events={this.state.events} 
+	      />
 	    </div>
 	  )
 	}
