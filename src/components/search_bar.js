@@ -8,28 +8,30 @@ class SearchBar extends React.Component {
 	// function is called all the time.
 	// The constructor function is reserved for doing some setup inside of our class, like initializing variables,
 	// initializing state, and stuff like that.
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.state = {
-    	term: ''
-    };
+  //   this.state = {
+  //   	term: ''
+  //   };
 
-    this.onInputChange = this.onInputChange.bind(this);
-  }
+  //   this.onInputChange = this.onInputChange.bind(this);
+  // }
 
-  onInputChange(term) {
-    this.setState({ term });
-  }
+  // onInputChange(term) {
+  //   this.setState({ term });
+  // }
 
   render() {
+		const { value, onSearchTermChange } = this.props;
 	  return (
-	  	<div>
-		    <input 
-          value={this.state.term}
-		    	onChange={event => this.onInputChange(event.target.value)}
+	  	<form>
+		    <input
+		    	type="text"
+          value={value}
+		    	onChange={onSearchTermChange}
 		    />
-	    </div>
+	    </form>
 	  )
   }
 }

@@ -11,19 +11,26 @@ class App extends React.Component {
 
     this.state = {
       events: [{key: "1", title: "event1", description: "the first event"}, {key: "2", title: "event2", description: "the second event"}],
-      selectedEvent: null
+      selectedEvent: null,
+      searchTerm: ''
     };
+    this.onSearchChange = this.onSearchChange.bind(this);
   }
+
+  onSearchChange(term) {
+    this.setState({ searchTerm: term.target.value });
+  }  
 
   render() {
 	  return (
 	    <div>
 	      <h2>Christian Hackers</h2>
-	      <SearchBar />
+	      <SearchBar value={this.state.searchTerm} onSearchTermChange={this.onSearchChange} />
 	      <EventDetail event={this.state.selectedEvent} />
 	      <EventList 
 	      	onEventSelect={selectedEvent => this.setState({ selectedEvent })}
-	      	events={this.state.events} 
+	      	events={this.state.events}
+	      	term={this.state.searchTerm}
 	      />
 	    </div>
 	  )
