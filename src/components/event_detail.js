@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 
-function EventDetail() {
+function EventDetail({ event }) {
+
+  if (!event) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
-      <h2>Event</h2>
+      <h2>{event.title}</h2>
+      <p>{event.description}</p>
     </div>
   )
 }

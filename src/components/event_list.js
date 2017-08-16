@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
+import EventListItem from './event_list_item';
 
-function EventList() {
+const isSearched = (searchTerm) => (item) => !searchTerm || item.title.toLowerCase().includes(searchTerm.toLowerCase());
+
+function EventList(props) {
   return (
-    <div>
-      <h2>Events</h2>
-    </div>
+    <ul>
+      {props.events.filter(isSearched(props.term)).map((event, index) => (
+        <EventListItem
+        	onEventSelect={props.onEventSelect}
+          key={event.key}
+          event={event}
+        />
+      ))}    
+    </ul>
   )
 }
 

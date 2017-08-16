@@ -1,11 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-function SearchBar() {
-  return (
-    <div>
-      <h2>Search...</h2>
-    </div>
-  )
+class SearchBar extends React.Component {
+	// We use the constructor method to initialize state in a class based component
+	// functional components do not have state, only class based components have state
+	// all javascript classes have a special function called 'constructor'. The constructor function is the first
+	// and only function called automatically whenever a new instance of the class is created. So the constructor
+	// function is called all the time.
+	// The constructor function is reserved for doing some setup inside of our class, like initializing variables,
+	// initializing state, and stuff like that.
+  // constructor(props) {
+  //   super(props);
+
+  //   this.state = {
+  //   	term: ''
+  //   };
+
+  //   this.onInputChange = this.onInputChange.bind(this);
+  // }
+
+  // onInputChange(term) {
+  //   this.setState({ term });
+  // }
+
+  render() {
+		const { value, onSearchTermChange } = this.props;
+	  return (
+	  	<form>
+		    <input
+		    	type="text"
+          value={value}
+		    	onChange={onSearchTermChange}
+		    />
+	    </form>
+	  )
+  }
 }
 
 export default SearchBar;
