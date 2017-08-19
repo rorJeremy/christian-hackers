@@ -1,5 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 import SearchBar from './components/search_bar';
 import EventDetail from './components/event_detail';
 import EventList from './components/event_list';
@@ -37,5 +42,25 @@ class App extends React.Component {
 	}
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+class Hey extends React.Component {
+	render() {
+		return <p>Hey hey hey....</p>
+	}
+}
+
+ReactDOM.render(
+  <Router>
+  	<div>
+      <Route exact path="/" component={App}/>
+      <Route path="/hey" component={Hey}/>
+    </div>
+  </Router>
+	, document.getElementById('root'));
 // registerServiceWorker();
+
+
+
+
+
+
+
