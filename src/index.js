@@ -8,6 +8,7 @@ import {
 import SearchBar from './components/search_bar';
 import EventDetail from './components/event_detail';
 import EventList from './components/event_list';
+import Header from './components/header';
 // import registerServiceWorker from './registerServiceWorker';
 
 class App extends React.Component {
@@ -29,7 +30,6 @@ class App extends React.Component {
   render() {
 	  return (
 	    <div>
-	      <h2>Christian Hackers</h2>
 	      <SearchBar value={this.state.searchTerm} onSearchTermChange={this.onSearchChange} />
 	      <EventDetail event={this.state.selectedEvent} />
 	      <EventList 
@@ -51,6 +51,7 @@ class Hey extends React.Component {
 ReactDOM.render(
   <Router>
   	<div>
+  		<Header />
       <Route exact path="/" component={App}/>
       <Route path="/hey" component={Hey}/>
     </div>
