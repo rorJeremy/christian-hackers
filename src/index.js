@@ -42,18 +42,12 @@ class App extends React.Component {
 	}
 }
 
-class Hey extends React.Component {
-	render() {
-		return <p>Hey hey hey....</p>
-	}
-}
-
 ReactDOM.render(
   <Router>
   	<div>
   		<Header />
       <Route exact path="/" component={App}/>
-      <Route path="/hey" component={Hey}/>
+      <Route path="/events" component={EventList}/>
     </div>
   </Router>
 	, document.getElementById('root'));
