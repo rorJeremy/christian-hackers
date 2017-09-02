@@ -16,8 +16,9 @@ ReactDOM.render(
   <Router>
   	<div>
   		<Header />
-      <Route exact path="/" component={HomePage}/>
-      <Route path="/events" component={EventList}/>
+      <Route exact path="/" component={HomePage} />
+      <Route exact path="/events" component={EventList} />
+      <Route path="/events/:id" component={EventDetail} />
     </div>
   </Router>
 	, document.getElementById('root'));
