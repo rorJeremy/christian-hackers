@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 function HomePage(props) {
   return (
-    <p>
-    	Home Page
-    </p>
+  	<div>
+	    <p>
+	    	Home Page
+	    </p>
+	    <p>
+	    	<Link to="/events">
+	    		Events
+	    	</Link>
+	    </p>
+    </div>
   )
 }
 
