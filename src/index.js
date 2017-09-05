@@ -14,19 +14,12 @@ import HomePage from './components/home_page';
 
 ReactDOM.render(
   <Router>
-  	<div>
-  		<Header />
+    <div>
+      <Header />
       <Route exact path="/" component={HomePage} />
       <Route exact path="/events" component={EventList} />
       <Route path="/events/:id" component={EventDetail} />
     </div>
   </Router>
-	, document.getElementById('root'));
+  , document.getElementById('root'));
 // registerServiceWorker();
-
-
-
-
-
-
-
