@@ -7,6 +7,7 @@ import Header from './components/header';
 import HomePage from './components/home_page';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
+import './index.css';
 // import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
