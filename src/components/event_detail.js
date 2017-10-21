@@ -1,17 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
+import axios from 'axios';
 
-function EventDetail({ event }) {
+class EventDetail extends React.Component {
+  constructor(props) {
+    super(props);
 
-  if (!event) {
-    return <div>Loading...</div>;
+    this.state = {
+      event: { title: 'Loading', description: 'Loading' },
+    };
   }
 
-  return (
-    <div>
-      <h2>{event.title}</h2>
-      <p>{event.description}</p>
-    </div>
-  )
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    axios
+      .get(`http://localhost:3002/api/v1/events/${id}`)
+      .then((response) => {
+        console.log(response);
+        this.setState({ event: response.data });
+      })
+      .catch(error => console.log(error));
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>{this.state.event.title}</h2>
+        <p>{this.state.event.description}</p>
+      </div>
+    );
+  }
 }
 
 export default EventDetail;

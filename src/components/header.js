@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Header(props) {
+function Header() {
   return (
     <h2>
-      <Link to="/">
-        Christian Hackers
-      </Link>
+      <Link to="/">Christian Hackers</Link>
     </h2>
-  )
+  );
 }
 
 export default Header;
