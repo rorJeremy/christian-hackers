@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 function EventDetail({ event }) {
-
   if (!event) {
     return <div>Loading...</div>;
   }
@@ -11,7 +10,7 @@ function EventDetail({ event }) {
       <h2>{event.title}</h2>
       <p>{event.description}</p>
     </div>
-  )
+  );
 }
 
 export default EventDetail;
