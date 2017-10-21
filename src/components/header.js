@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Navbar, Nav, NavItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 function Header() {
   return (
@@ -14,12 +15,12 @@ function Header() {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav pullRight>
-            <NavItem>
-              <Link to="/">About</Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/events">Events</Link>
-            </NavItem>
+            <LinkContainer to="/">
+              <NavItem>About</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/events">
+              <NavItem>Events</NavItem>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Grid>
