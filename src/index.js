@@ -5,6 +5,9 @@ import EventDetail from './components/event_detail';
 import EventList from './components/event_list';
 import Header from './components/header';
 import HomePage from './components/home_page';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
+import './index.css';
 // import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(

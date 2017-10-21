@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import { Breadcrumb } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 class EventDetail extends React.Component {
   constructor(props) {
@@ -24,6 +26,16 @@ class EventDetail extends React.Component {
   render() {
     return (
       <div>
+        <Breadcrumb>
+          <LinkContainer to="/">
+            <Breadcrumb.Item>Home</Breadcrumb.Item>
+          </LinkContainer>
+          <LinkContainer to="/events">
+            <Breadcrumb.Item>Events</Breadcrumb.Item>
+          </LinkContainer>
+          <Breadcrumb.Item active>{this.state.event.title}</Breadcrumb.Item>
+        </Breadcrumb>
+
         <h2>{this.state.event.title}</h2>
         <p>{this.state.event.description}</p>
       </div>
