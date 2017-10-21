@@ -1,6 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SearchBar from './search_bar';
-import EventListItem from './event_list_item';
 import axios from 'axios';
 
 const isSearched = searchTerm => item =>
@@ -36,9 +36,13 @@ class EventList extends React.Component {
       <div>
         <SearchBar value={this.state.searchTerm} onSearchTermChange={this.onSearchChange} />
         <ul>
-          {this.state.events
-            .filter(isSearched(this.state.searchTerm))
-            .map((event, index) => <EventListItem key={event.id} event={event} />)}
+          {this.state.events.filter(isSearched(this.state.searchTerm)).map(event => (
+            <li key={event.id}>
+              <Link style={{ color: 'black' }} to={`events/${event.id}`}>
+                <h3>{event.title}</h3>
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     );
