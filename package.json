@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "bootstrap": "3",
+    "moment": "^2.19.1",
     "react": "^16.0.0",
     "react-big-calendar": "^0.16.1",
     "react-bootstrap": "^0.31.3",
