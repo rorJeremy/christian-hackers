@@ -26,13 +26,9 @@ class SearchBar extends React.Component {
     const { value, onSearchTermChange } = this.props;
     return (
       <form>
-        <input
-          type="text"
-          value={value}
-          onChange={onSearchTermChange}
-        />
+        <input type="text" value={value} onChange={onSearchTermChange} placeholder="Search..." />
       </form>
-    )
+    );
   }
 }
 
