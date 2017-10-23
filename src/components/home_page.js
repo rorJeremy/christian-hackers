@@ -34,6 +34,9 @@ class HomePage extends React.Component {
       })
       .catch(error => console.log(error));
   }
+  rerouteToEventPage(eventID) {
+    this.props.history.push(`/events/${eventID}`);
+  }
   render() {
     return (
       <div>
@@ -41,7 +44,7 @@ class HomePage extends React.Component {
         <p>
           <Link to="/events">Events</Link>
         </p>
-        <EventCalendar events={eventz} />
+        <EventCalendar events={eventz} eventSelected={this.rerouteToEventPage.bind(this)} />
       </div>
     );
   }

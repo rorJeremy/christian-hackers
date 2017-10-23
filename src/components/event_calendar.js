@@ -17,8 +17,18 @@ class EventCalendar extends React.Component {
     };
   }
 
+  eventSelected(e) {
+    this.props.eventSelected(e.id);
+  }
+
   render() {
-    return <BigCalendar style={{ height: '420px' }} events={this.state.events} />;
+    return (
+      <BigCalendar
+        style={{ height: '420px' }}
+        events={this.state.events}
+        onSelectEvent={this.eventSelected.bind(this)}
+      />
+    );
   }
 }
 
