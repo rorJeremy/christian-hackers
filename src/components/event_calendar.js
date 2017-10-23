@@ -9,27 +9,25 @@ import moment from 'moment';
 BigCalendar.momentLocalizer(moment);
 require('react-big-calendar/lib/css/react-big-calendar.css');
 
-class EventCalendar extends React.Component {
-  eventSelected(e) {
-    this.props.eventSelected(e.id);
-  }
+function EventCalendar(props) {
+  const eventSelected = (e) => {
+    props.eventSelected(e.id);
+  };
 
-  render() {
-    const events = this.props.events;
-    const eventsToDisplayInCalendar = events.map(event => ({
-      ...event,
-      title: event.title,
-      start: event.start_time,
-      end: event.end_time,
-    }));
-    return (
-      <BigCalendar
-        style={{ height: '420px' }}
-        events={eventsToDisplayInCalendar}
-        onSelectEvent={this.eventSelected.bind(this)}
-      />
-    );
-  }
+  const { events } = props;
+  const eventsToDisplayInCalendar = events.map(event => ({
+    ...event,
+    title: event.title,
+    start: event.start_time,
+    end: event.end_time,
+  }));
+  return (
+    <BigCalendar
+      style={{ height: '420px' }}
+      events={eventsToDisplayInCalendar}
+      onSelectEvent={eventSelected.bind(this)}
+    />
+  );
 }
 
 export default EventCalendar;
