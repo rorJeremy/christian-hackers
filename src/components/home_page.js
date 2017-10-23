@@ -25,9 +25,13 @@ class HomePage extends React.Component {
   render() {
     return (
       <div className="container">
-        <p>Home Page</p>
+        <h1 className="text-center">Christian Hackers</h1>
+        <p className="text-center">We are adventurers, visionaries, risk-takers, and artists</p>
+        <p className="text-center">
+          who voluntarily follow Christ as we use our gifts to create and help others.
+        </p>
         <p>
-          <Link to="/events">Events</Link>
+          <Link to="/events">View Events As A List</Link>
         </p>
         <EventCalendar
           events={this.state.events}
