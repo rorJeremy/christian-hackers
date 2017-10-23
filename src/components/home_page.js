@@ -3,21 +3,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import EventCalendar from './event_calendar';
 
-const eventz = [
-  {
-    end: 'Tue Oct 30 2017 18:00:00 GMT-0400 (EDT)',
-    start: 'Tue Oct 30 2017 21:00:00 GMT-0400 (EDT)',
-    title: 'Hacknight/Serverless Campaign Kickoff!',
-    id: 1,
-  },
-  {
-    end: 'Fri Nov 06 2017 18:00:00 GMT-0400 (EDT)',
-    start: 'Fri Nov 06 2017 21:00:00 GMT-0400 (EDT)',
-    title: 'Hacknight/Serverless Campaign week 2',
-    id: 2,
-  },
-];
-
 class HomePage extends React.Component {
   constructor() {
     super();
@@ -25,7 +10,7 @@ class HomePage extends React.Component {
       events: [],
     };
   }
-  componentDidMount() {
+  componentWillMount() {
     axios
       .get('http://localhost:3002/api/v1/events.json')
       .then((response) => {
@@ -44,7 +29,10 @@ class HomePage extends React.Component {
         <p>
           <Link to="/events">Events</Link>
         </p>
-        <EventCalendar events={eventz} eventSelected={this.rerouteToEventPage.bind(this)} />
+        <EventCalendar
+          events={this.state.events}
+          eventSelected={this.rerouteToEventPage.bind(this)}
+        />
       </div>
     );
   }

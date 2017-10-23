@@ -10,22 +10,22 @@ BigCalendar.momentLocalizer(moment);
 require('react-big-calendar/lib/css/react-big-calendar.css');
 
 class EventCalendar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      events: this.props.events,
-    };
-  }
-
   eventSelected(e) {
     this.props.eventSelected(e.id);
   }
 
   render() {
+    const events = this.props.events;
+    const eventsToDisplayInCalendar = events.map(event => ({
+      ...event,
+      title: event.title,
+      start: event.start_time,
+      end: event.end_time,
+    }));
     return (
       <BigCalendar
         style={{ height: '420px' }}
-        events={this.state.events}
+        events={eventsToDisplayInCalendar}
         onSelectEvent={this.eventSelected.bind(this)}
       />
     );
