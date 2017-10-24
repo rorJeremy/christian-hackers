@@ -22,6 +22,7 @@ function EventCalendar(props) {
       style={{ height: '420px' }}
       events={eventsToDisplayInCalendar}
       onSelectEvent={eventSelected.bind(this)}
+      views={['month']}
     />
   );
 }
