@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import SearchBar from './search_bar';
+import moment from 'moment';
 import axios from 'axios';
-import { Breadcrumb } from 'react-bootstrap';
+import { Breadcrumb, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import SearchBar from './search_bar';
 
 const isSearched = searchTerm => item =>
   !searchTerm || item.title.toLowerCase().includes(searchTerm.toLowerCase());
@@ -35,7 +35,7 @@ class EventList extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <Breadcrumb>
           <LinkContainer to="/">
             <Breadcrumb.Item>Home</Breadcrumb.Item>
@@ -43,16 +43,29 @@ class EventList extends React.Component {
           <Breadcrumb.Item active>Events</Breadcrumb.Item>
         </Breadcrumb>
 
-        <SearchBar value={this.state.searchTerm} onSearchTermChange={this.onSearchChange} />
-        <ul>
-          {this.state.events.filter(isSearched(this.state.searchTerm)).map(event => (
-            <li key={event.id}>
-              <Link style={{ color: 'black' }} to={`events/${event.id}`}>
-                <h3>{event.title}</h3>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div className="row">
+          <SearchBar value={this.state.searchTerm} onSearchTermChange={this.onSearchChange} />
+        </div>
+        <br />
+
+        <div className="row">
+          <ListGroup>
+            {this.state.events.filter(isSearched(this.state.searchTerm)).map(event => (
+              <LinkContainer to={`events/${event.id}`}>
+                <ListGroupItem key={event.id} header={event.title}>
+                  <b>Start Time:</b>{' '}
+                  {moment(event.start_time)
+                    .utc()
+                    .format('dddd, MMMM Do YYYY, h:mm a')}{' '}
+                  <b>End Time:</b>{' '}
+                  {moment(event.end_time)
+                    .utc()
+                    .format('dddd, MMMM Do YYYY, h:mm a')}
+                </ListGroupItem>
+              </LinkContainer>
+            ))}
+          </ListGroup>
+        </div>
       </div>
     );
   }

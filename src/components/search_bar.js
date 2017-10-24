@@ -25,14 +25,18 @@ class SearchBar extends React.Component {
   render() {
     const { value, onSearchTermChange } = this.props;
     return (
-      <form>
-        <input
-          type="text"
-          value={value}
-          onChange={onSearchTermChange}
-        />
-      </form>
-    )
+      <div className="col-md-4 col-md-offset-4">
+        <form>
+          <input
+            className="form-control"
+            type="text"
+            value={value}
+            onChange={onSearchTermChange}
+            placeholder="Search Events..."
+          />
+        </form>
+      </div>
+    );
   }
 }
 
