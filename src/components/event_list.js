@@ -52,29 +52,34 @@ class EventList extends React.Component {
           <Breadcrumb.Item active>Events</Breadcrumb.Item>
         </Breadcrumb>
 
-        <SearchBar
-          value={this.state.searchTerm}
-          onSearchTermChange={this.onSearchChange}
-        />
+        <div className="row">
+          <SearchBar
+            value={this.state.searchTerm}
+            onSearchTermChange={this.onSearchChange}
+          />
+        </div>
+        <br />
 
-        <ListGroup>
-          {this.state.events
-            .filter(isSearched(this.state.searchTerm))
-            .map(event => (
-              <LinkContainer to={`events/${event.id}`}>
-                <ListGroupItem key={event.id} header={event.title}>
-                  <b>Start Time:</b>{' '}
-                  {moment(event.start_time)
-                    .utc()
-                    .format('dddd, MMMM Do YYYY, h:mm a')}{' '}
-                  <b>End Time:</b>{' '}
-                  {moment(event.end_time)
-                    .utc()
-                    .format('dddd, MMMM Do YYYY, h:mm a')}
-                </ListGroupItem>
-              </LinkContainer>
-            ))}
-        </ListGroup>
+        <div className="row">
+          <ListGroup>
+            {this.state.events
+              .filter(isSearched(this.state.searchTerm))
+              .map(event => (
+                <LinkContainer to={`events/${event.id}`}>
+                  <ListGroupItem key={event.id} header={event.title}>
+                    <b>Start Time:</b>{' '}
+                    {moment(event.start_time)
+                      .utc()
+                      .format('dddd, MMMM Do YYYY, h:mm a')}{' '}
+                    <b>End Time:</b>{' '}
+                    {moment(event.end_time)
+                      .utc()
+                      .format('dddd, MMMM Do YYYY, h:mm a')}
+                  </ListGroupItem>
+                </LinkContainer>
+              ))}
+          </ListGroup>
+        </div>
       </div>
     );
   }

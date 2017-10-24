@@ -1,4 +1,5 @@
 import React from 'react';
+import style from '../index.css';
 
 class SearchBar extends React.Component {
   // We use the constructor method to initialize state in a class based component
@@ -25,9 +26,17 @@ class SearchBar extends React.Component {
   render() {
     const { value, onSearchTermChange } = this.props;
     return (
-      <form>
-        <input type="text" value={value} onChange={onSearchTermChange} placeholder="Search..." />
-      </form>
+      <div className="col-md-4 col-md-offset-4">
+        <form>
+          <input
+            className="form-control"
+            type="text"
+            value={value}
+            onChange={onSearchTermChange}
+            placeholder="Search Events..."
+          />
+        </form>
+      </div>
     );
   }
 }
