@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import { Breadcrumb } from 'react-bootstrap';
+import { Breadcrumb, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import moment from 'moment';
 
 class EventDetail extends React.Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class EventDetail extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <Breadcrumb>
           <LinkContainer to="/">
             <Breadcrumb.Item>Home</Breadcrumb.Item>
@@ -38,6 +39,21 @@ class EventDetail extends React.Component {
 
         <h2>{this.state.event.title}</h2>
         <p>{this.state.event.description}</p>
+        <p>
+          <b>Start Time:</b>{' '}
+          {moment(this.state.event.start_time)
+            .utc()
+            .format('dddd, MMMM Do YYYY, h:mm a')}
+        </p>
+        <p>
+          <b>End Time:</b>{' '}
+          {moment(this.state.event.end_time)
+            .utc()
+            .format('dddd, MMMM Do YYYY, h:mm a')}
+        </p>
+        <a href="https://www.meetup.com/hackersdfw/" target="_blank">
+          <Button bsStyle="success">RSVP To This Event</Button>
+        </a>
       </div>
     );
   }
