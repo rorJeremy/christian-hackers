@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Breadcrumb } from 'react-bootstrap';
+import { Breadcrumb, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import moment from 'moment';
 
@@ -51,6 +51,9 @@ class EventDetail extends React.Component {
             .utc()
             .format('dddd, MMMM Do YYYY, h:mm a')}
         </p>
+        <a href="https://www.meetup.com/hackersdfw/" target="_blank">
+          <Button bsStyle="success">RSVP To This Event</Button>
+        </a>
       </div>
     );
   }
