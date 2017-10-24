@@ -1,5 +1,4 @@
 import React from 'react';
-import style from '../index.css';
 
 class SearchBar extends React.Component {
   // We use the constructor method to initialize state in a class based component
