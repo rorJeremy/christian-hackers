@@ -14,7 +14,7 @@ class EventList extends React.Component {
 
     this.state = {
       events: [],
-      searchTerm: ''
+      searchTerm: '',
     };
     this.onSearchChange = this.onSearchChange.bind(this);
   }
@@ -22,7 +22,7 @@ class EventList extends React.Component {
   componentDidMount() {
     axios
       .get('http://localhost:3002/api/v1/events.json')
-      .then(response => {
+      .then((response) => {
         console.log(response);
         this.setState({ events: response.data });
       })
@@ -34,15 +34,6 @@ class EventList extends React.Component {
   }
 
   render() {
-    const options = {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    };
-
     return (
       <div className="container">
         <Breadcrumb>
@@ -53,31 +44,26 @@ class EventList extends React.Component {
         </Breadcrumb>
 
         <div className="row">
-          <SearchBar
-            value={this.state.searchTerm}
-            onSearchTermChange={this.onSearchChange}
-          />
+          <SearchBar value={this.state.searchTerm} onSearchTermChange={this.onSearchChange} />
         </div>
         <br />
 
         <div className="row">
           <ListGroup>
-            {this.state.events
-              .filter(isSearched(this.state.searchTerm))
-              .map(event => (
-                <LinkContainer to={`events/${event.id}`}>
-                  <ListGroupItem key={event.id} header={event.title}>
-                    <b>Start Time:</b>{' '}
-                    {moment(event.start_time)
-                      .utc()
-                      .format('dddd, MMMM Do YYYY, h:mm a')}{' '}
-                    <b>End Time:</b>{' '}
-                    {moment(event.end_time)
-                      .utc()
-                      .format('dddd, MMMM Do YYYY, h:mm a')}
-                  </ListGroupItem>
-                </LinkContainer>
-              ))}
+            {this.state.events.filter(isSearched(this.state.searchTerm)).map(event => (
+              <LinkContainer to={`events/${event.id}`}>
+                <ListGroupItem key={event.id} header={event.title}>
+                  <b>Start Time:</b>{' '}
+                  {moment(event.start_time)
+                    .utc()
+                    .format('dddd, MMMM Do YYYY, h:mm a')}{' '}
+                  <b>End Time:</b>{' '}
+                  {moment(event.end_time)
+                    .utc()
+                    .format('dddd, MMMM Do YYYY, h:mm a')}
+                </ListGroupItem>
+              </LinkContainer>
+            ))}
           </ListGroup>
         </div>
       </div>
