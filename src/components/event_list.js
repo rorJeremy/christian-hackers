@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import SearchBar from './search_bar';
 import axios from 'axios';
-import { Breadcrumb } from 'react-bootstrap';
+import { Breadcrumb, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 const isSearched = searchTerm => item =>
@@ -34,6 +35,15 @@ class EventList extends React.Component {
   }
 
   render() {
+    const options = {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    };
+
     return (
       <div className="container">
         <Breadcrumb>
@@ -44,15 +54,17 @@ class EventList extends React.Component {
         </Breadcrumb>
 
         <SearchBar value={this.state.searchTerm} onSearchTermChange={this.onSearchChange} />
-        <ul>
+
+        <ListGroup>
           {this.state.events.filter(isSearched(this.state.searchTerm)).map(event => (
-            <li key={event.id}>
-              <Link style={{ color: 'black' }} to={`events/${event.id}`}>
-                <h3>{event.title}</h3>
-              </Link>
-            </li>
+            <LinkContainer to={`events/${event.id}`}>
+              <ListGroupItem key={event.id} header={event.title}>
+                <b>Start Time:</b> {moment(event.start_time).format('dddd, MMMM Do YYYY, h:mm a')}{' '}
+                <b>End Time:</b> {moment(event.end_time).format('dddd, MMMM Do YYYY, h:mm a')}
+              </ListGroupItem>
+            </LinkContainer>
           ))}
-        </ul>
+        </ListGroup>
       </div>
     );
   }
