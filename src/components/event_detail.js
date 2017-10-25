@@ -52,7 +52,7 @@ class EventDetail extends React.Component {
             .utc()
             .format('dddd, MMMM Do YYYY, h:mm a')}
         </p>
-        <a href="https://www.meetup.com/hackersdfw/" target="_blank">
+        <a href="https://www.meetup.com/hackersdfw/" target="_blank" rel="noopener noreferrer">
           <Button bsStyle="success">RSVP To This Event</Button>
         </a>
       </div>
