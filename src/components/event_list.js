@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Breadcrumb, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import SearchBar from './search_bar';
+import { API_ROOT } from '../config/api-config';
 
 const isSearched = searchTerm => item =>
   !searchTerm || item.title.toLowerCase().includes(searchTerm.toLowerCase());
@@ -21,7 +22,7 @@ class EventList extends React.Component {
 
   componentDidMount() {
     axios
-      .get('http://localhost:3002/api/v1/events.json')
+      .get(`${API_ROOT}/events.json`)
       .then((response) => {
         console.log(response);
         this.setState({ events: response.data });
