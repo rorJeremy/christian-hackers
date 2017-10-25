@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import EventCalendar from './event_calendar';
+import { API_ROOT } from '../config/api-config';
 
 class HomePage extends React.Component {
   constructor() {
@@ -10,9 +11,10 @@ class HomePage extends React.Component {
       events: [],
     };
   }
+
   componentWillMount() {
     axios
-      .get('http://localhost:3002/api/v1/events.json')
+      .get(`${API_ROOT}/events.json`)
       .then((response) => {
         console.log(response);
         this.setState({ events: response.data });

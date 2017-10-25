@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Breadcrumb, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import moment from 'moment';
+import { API_ROOT } from '../config/api-config';
 
 class EventDetail extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class EventDetail extends React.Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     axios
-      .get(`http://localhost:3002/api/v1/events/${id}`)
+      .get(`${API_ROOT}/events/${id}`)
       .then((response) => {
         console.log(response);
         this.setState({ event: response.data });
