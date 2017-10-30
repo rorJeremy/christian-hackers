@@ -3,7 +3,7 @@ const apiVersion = 'v1';
 
 const hostname = window && window.location && window.location.hostname;
 
-if (hostname === 'christianhackers.com') {
+if (new RegExp('christianhackers.com').test(hostname)) {
   backendHost = 'https://christian-hackers-api.herokuapp.com';
 } else if (new RegExp('christian-hackers').test(hostname)) {
   backendHost = 'https://christian-hackers-api.herokuapp.com';
