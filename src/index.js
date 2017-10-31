@@ -7,6 +7,7 @@ import EventDetail from './components/event_detail';
 import EventList from './components/event_list';
 import Header from './components/header';
 import HomePage from './components/home_page';
+import Login from './components/login';
 import './index.css';
 // import registerServiceWorker from './registerServiceWorker';
 
@@ -15,6 +16,7 @@ ReactDOM.render(
     <div>
       <Header />
       <Route exact path="/" component={HomePage} />
+      <Route path="/login" component={Login} />
       <Route exact path="/events" component={EventList} />
       <Route path="/events/:id" component={EventDetail} />
     </div>
