@@ -1,31 +1,84 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Grid, Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import $ from 'jquery';
 
-function Header() {
-  return (
-    <Navbar inverse fixedTop>
-      <Grid>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <Link to="/">Christian Hackers</Link>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav pullRight>
-            <LinkContainer to="/">
-              <NavItem>About</NavItem>
-            </LinkContainer>
-            <LinkContainer to="/events">
-              <NavItem>Events</NavItem>
-            </LinkContainer>
-          </Nav>
-        </Navbar.Collapse>
-      </Grid>
-    </Navbar>
-  );
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleSignOut = this.handleSignOut.bind(this);
+  }
+
+  handleSignOut(e) {
+    e.preventDefault();
+    $.ajax({
+      type: 'DELETE',
+      url: 'http://localhost:3002/auth/sign_out',
+      data: JSON.parse(sessionStorage.user),
+    }).done(() => {
+      sessionStorage.removeItem('user');
+      this.props.history.push('/login');
+    });
+  }
+
+  render() {
+    if (sessionStorage.getItem('user') === null) {
+      return (
+        <Navbar inverse fixedTop>
+          <Grid>
+            <Navbar.Header>
+              <Navbar.Brand>
+                <Link to="/">Christian Hackers</Link>
+              </Navbar.Brand>
+              <Navbar.Toggle />
+            </Navbar.Header>
+            <Navbar.Collapse>
+              <Nav pullRight>
+                <LinkContainer to="/">
+                  <NavItem>About</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/events">
+                  <NavItem>Events</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/login">
+                  <NavItem>Log In</NavItem>
+                </LinkContainer>
+              </Nav>
+            </Navbar.Collapse>
+          </Grid>
+        </Navbar>
+      );
+    }
+    return (
+      <Navbar inverse fixedTop>
+        <Grid>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <Link to="/">Christian Hackers</Link>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav pullRight>
+              <LinkContainer to="/">
+                <NavItem>About</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/events">
+                <NavItem>Events</NavItem>
+              </LinkContainer>
+              {sessionStorage.getItem('user') && (
+                <NavItem>{JSON.parse(sessionStorage.getItem('user')).uid}</NavItem>
+              )}
+              <LinkContainer to="#" onClick={this.handleSignOut}>
+                <NavItem>Sign Out</NavItem>
+              </LinkContainer>
+            </Nav>
+          </Navbar.Collapse>
+        </Grid>
+      </Navbar>
+    );
+  }
 }
 
-export default Header;
+export default withRouter(Header);

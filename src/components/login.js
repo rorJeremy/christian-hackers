@@ -1,15 +1,34 @@
 import React from 'react';
 import $ from 'jquery';
+// import axios from 'axios';
 
-export default class Login extends React.Component {
+class Login extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: '',
+      password: '',
+    };
+    this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  emailChange(event) {
+    this.setState({ email: event.target.value });
+  }
+
+  passwordChange(event) {
+    this.setState({ password: event.target.value });
+  }
+
   handleLogin(e) {
     e.preventDefault();
     $.ajax({
       type: 'POST',
       url: 'http://localhost:3002/auth/sign_in',
       data: {
-        email: this.email.value,
-        password: this.password.value,
+        email: this.state.email,
+        password: this.state.password,
       },
     }).done((response, status, jqXHR) => {
       sessionStorage.setItem(
@@ -29,11 +48,17 @@ export default class Login extends React.Component {
       <div>
         <h2>Sign in</h2>
         <form onSubmit={this.handleLogin}>
-          <input name="email" ref={input => (this.email = input)} />
-          <input name="password" type="password" ref={input => (this.password = input)} />
+          <input type="text" value={this.state.email} onChange={event => this.emailChange(event)} />
+          <input
+            type="password"
+            value={this.state.password}
+            onChange={event => this.passwordChange(event)}
+          />
           <input type="submit" />
         </form>
       </div>
     );
   }
 }
+
+export default Login;
