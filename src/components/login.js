@@ -45,16 +45,30 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container text-center">
         <h2>Sign in</h2>
         <form onSubmit={this.handleLogin}>
-          <input type="text" value={this.state.email} onChange={event => this.emailChange(event)} />
-          <input
-            type="password"
-            value={this.state.password}
-            onChange={event => this.passwordChange(event)}
-          />
-          <input type="submit" />
+          <div className="form-group col-md-4 col-md-offset-4">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Email"
+              value={this.state.email}
+              onChange={event => this.emailChange(event)}
+            />
+          </div>
+          <div className="form-group col-md-4 col-md-offset-4">
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Password"
+              value={this.state.password}
+              onChange={event => this.passwordChange(event)}
+            />
+          </div>
+          <div className="form-group">
+            <input className="btn btn-primary col-md-4 col-md-offset-4" type="submit" />
+          </div>
         </form>
       </div>
     );
