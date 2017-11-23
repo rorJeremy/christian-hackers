@@ -15,7 +15,7 @@ class Header extends React.Component {
     $.ajax({
       type: 'DELETE',
       url: 'http://localhost:3002/auth/sign_out',
-      data: JSON.parse(sessionStorage.user),
+      data: JSON.parse(sessionStorage.getItem('user')),
     }).done(() => {
       sessionStorage.removeItem('user');
       this.props.history.push('/login');
@@ -35,7 +35,7 @@ class Header extends React.Component {
             </Navbar.Header>
             <Navbar.Collapse>
               <Nav pullRight>
-                <LinkContainer to="/">
+                <LinkContainer to="/#">
                   <NavItem>About</NavItem>
                 </LinkContainer>
                 <LinkContainer to="/events">
@@ -61,11 +61,14 @@ class Header extends React.Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-              <LinkContainer to="/">
+              <LinkContainer to="/#">
                 <NavItem>About</NavItem>
               </LinkContainer>
               <LinkContainer to="/events">
                 <NavItem>Events</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/campaigns">
+                <NavItem>Campaigns</NavItem>
               </LinkContainer>
               {sessionStorage.getItem('user') && (
                 <NavItem>{JSON.parse(sessionStorage.getItem('user')).uid}</NavItem>
