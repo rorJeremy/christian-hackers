@@ -12,3 +12,4 @@ if (new RegExp('christianhackers.com').test(hostname)) {
 }
 
 export const API_ROOT = `${backendHost}/api/${apiVersion}`;
+export const ROOT_URL = `${backendHost}`;

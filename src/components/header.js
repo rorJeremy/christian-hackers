@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { Grid, Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import $ from 'jquery';
-import { API_ROOT } from '../config/api-config';
+import { ROOT_URL } from '../config/api-config';
 
 class Header extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class Header extends React.Component {
     e.preventDefault();
     $.ajax({
       type: 'DELETE',
-      url: `${API_ROOT}/auth/sign_out`,
+      url: `${ROOT_URL}/auth/sign_out`,
       data: JSON.parse(sessionStorage.getItem('user')),
     }).done(() => {
       sessionStorage.removeItem('user');

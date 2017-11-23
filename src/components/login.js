@@ -1,6 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-import { API_ROOT } from '../config/api-config';
+import { ROOT_URL } from '../config/api-config';
 
 class Login extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ class Login extends React.Component {
     e.preventDefault();
     $.ajax({
       type: 'POST',
-      url: `${API_ROOT}/auth/sign_in`,
+      url: `${ROOT_URL}/auth/sign_in`,
       data: {
         email: this.state.email,
         password: this.state.password,
