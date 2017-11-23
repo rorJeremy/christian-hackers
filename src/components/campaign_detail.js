@@ -25,6 +25,24 @@ class CampaignDetail extends React.Component {
   }
 
   render() {
+    if (sessionStorage.getItem('user') === null) {
+      return (
+        <div className="container">
+          <Breadcrumb>
+            <LinkContainer to="/">
+              <Breadcrumb.Item>Home</Breadcrumb.Item>
+            </LinkContainer>
+            <LinkContainer to="/campaigns">
+              <Breadcrumb.Item>Campaigns</Breadcrumb.Item>
+            </LinkContainer>
+            <Breadcrumb.Item active>{this.state.campaign.title}</Breadcrumb.Item>
+          </Breadcrumb>
+
+          <h2>{this.state.campaign.title}</h2>
+          <p>{this.state.campaign.description}</p>
+        </div>
+      );
+    }
     return (
       <div className="container">
         <Breadcrumb>
