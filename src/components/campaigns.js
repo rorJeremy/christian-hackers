@@ -15,15 +15,13 @@ class Campaigns extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.match && sessionStorage.getItem('user')) {
-      axios
-        .get(`${API_ROOT}/campaigns.json`)
-        .then((response) => {
-          console.log(response);
-          this.setState({ campaigns: response.data });
-        })
-        .catch(error => console.log(error));
-    }
+    axios
+      .get(`${API_ROOT}/campaigns.json`)
+      .then((response) => {
+        console.log(response);
+        this.setState({ campaigns: response.data });
+      })
+      .catch(error => console.log(error));
   }
 
   render() {

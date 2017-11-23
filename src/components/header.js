@@ -41,6 +41,9 @@ class Header extends React.Component {
                 <LinkContainer to="/events">
                   <NavItem>Events</NavItem>
                 </LinkContainer>
+                <LinkContainer to="/campaigns">
+                  <NavItem>Campaigns</NavItem>
+                </LinkContainer>
                 <LinkContainer to="/login">
                   <NavItem>Log In</NavItem>
                 </LinkContainer>
