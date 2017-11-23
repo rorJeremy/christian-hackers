@@ -37,6 +37,7 @@ class Login extends React.Component {
           'access-token': jqXHR.getResponseHeader('access-token'),
           client: jqXHR.getResponseHeader('client'),
           uid: response.data.uid,
+          id: response.data.id,
         }),
       );
       this.props.history.push('/');
