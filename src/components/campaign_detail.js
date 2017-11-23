@@ -43,14 +43,11 @@ class CampaignDetail extends React.Component {
 
   registerForCampaign() {
     const { id } = this.props.match.params;
-    console.log('HEY HEY HEY NOW!');
-
     instance
       .post(`/campaigns/${id}/campaign_registrations.json`, {
         id,
       })
       .then((response) => {
-        console.log(response);
         this.setState({ registered: true });
       })
       .catch((error) => {
@@ -60,14 +57,11 @@ class CampaignDetail extends React.Component {
 
   unregisterForCampaign() {
     const { id } = this.props.match.params;
-    console.log('HEY HEY HEY NOW!');
-
     instance
       .delete(`/campaigns/${id}/campaign_registration/remove.json`, {
         id,
       })
       .then((response) => {
-        console.log(response);
         this.setState({ registered: false });
       })
       .catch((error) => {
@@ -108,7 +102,6 @@ class CampaignDetail extends React.Component {
 
           <h2>{this.state.campaign.title}</h2>
           <p>{this.state.campaign.description}</p>
-          <p>{this.state.registered}</p>
           <Button bsStyle="success" onClick={this.registerForCampaign}>
             Register For This Campaign
           </Button>
@@ -129,7 +122,6 @@ class CampaignDetail extends React.Component {
 
         <h2>{this.state.campaign.title}</h2>
         <p>{this.state.campaign.description}</p>
-        <p>{this.state.registered}</p>
         <Button bsStyle="danger" onClick={this.unregisterForCampaign}>
           Unregister To This Campaign
         </Button>
