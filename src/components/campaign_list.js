@@ -10,7 +10,7 @@ function CampaignList(props) {
     <div className="row">
       <ListGroup>
         {campaigns.map(campaign => (
-          <LinkContainer key={campaign.id} to={`campaigns/${campaign.id}`}>
+          <LinkContainer key={campaign.id} to={`/campaigns/${campaign.id}`}>
             <ListGroupItem header={campaign.title} />
           </LinkContainer>
         ))}

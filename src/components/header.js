@@ -74,6 +74,11 @@ class Header extends React.Component {
               <LinkContainer to="/campaigns">
                 <NavItem>Campaigns</NavItem>
               </LinkContainer>
+              <LinkContainer
+                to={`/users/${JSON.parse(sessionStorage.getItem('user')).id}/campaigns`}
+              >
+                <NavItem>My Campaigns</NavItem>
+              </LinkContainer>
               {sessionStorage.getItem('user') && (
                 <NavItem>{JSON.parse(sessionStorage.getItem('user')).uid}</NavItem>
               )}
