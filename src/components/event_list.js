@@ -24,7 +24,6 @@ class EventList extends React.Component {
     axios
       .get(`${API_ROOT}/events.json`)
       .then((response) => {
-        console.log(response);
         this.setState({ events: response.data });
       })
       .catch(error => console.log(error));
@@ -52,8 +51,8 @@ class EventList extends React.Component {
         <div className="row">
           <ListGroup>
             {this.state.events.filter(isSearched(this.state.searchTerm)).map(event => (
-              <LinkContainer to={`events/${event.id}`}>
-                <ListGroupItem key={event.id} header={event.title}>
+              <LinkContainer key={event.id} to={`events/${event.id}`}>
+                <ListGroupItem header={event.title}>
                   <b>Start Time:</b>{' '}
                   {moment(event.start_time)
                     .utc()

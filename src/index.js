@@ -5,6 +5,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import EventDetail from './components/event_detail';
 import EventList from './components/event_list';
+import CampaignDetail from './components/campaign_detail';
+import Campaigns from './components/campaigns';
+import UserCampaigns from './components/user_campaigns';
 import Header from './components/header';
 import HomePage from './components/home_page';
 import Login from './components/login';
@@ -19,6 +22,9 @@ ReactDOM.render(
       <Route path="/login" component={Login} />
       <Route exact path="/events" component={EventList} />
       <Route path="/events/:id" component={EventDetail} />
+      <Route exact path="/campaigns" component={Campaigns} />
+      <Route path="/campaigns/:id" component={CampaignDetail} />
+      <Route path="/users/:id/campaigns" component={UserCampaigns} />
     </div>
   </Router>,
   document.getElementById('root'),

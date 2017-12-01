@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { Grid, Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import $ from 'jquery';
+import { ROOT_URL } from '../config/api-config';
 
 class Header extends React.Component {
   constructor(props) {
@@ -14,8 +15,8 @@ class Header extends React.Component {
     e.preventDefault();
     $.ajax({
       type: 'DELETE',
-      url: 'http://localhost:3002/auth/sign_out',
-      data: JSON.parse(sessionStorage.user),
+      url: `${ROOT_URL}/auth/sign_out`,
+      data: JSON.parse(sessionStorage.getItem('user')),
     }).done(() => {
       sessionStorage.removeItem('user');
       this.props.history.push('/login');
@@ -35,11 +36,14 @@ class Header extends React.Component {
             </Navbar.Header>
             <Navbar.Collapse>
               <Nav pullRight>
-                <LinkContainer to="/">
+                <LinkContainer to="/#">
                   <NavItem>About</NavItem>
                 </LinkContainer>
                 <LinkContainer to="/events">
                   <NavItem>Events</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/campaigns">
+                  <NavItem>Campaigns</NavItem>
                 </LinkContainer>
                 <LinkContainer to="/login">
                   <NavItem>Log In</NavItem>
@@ -61,11 +65,19 @@ class Header extends React.Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-              <LinkContainer to="/">
+              <LinkContainer to="/#">
                 <NavItem>About</NavItem>
               </LinkContainer>
               <LinkContainer to="/events">
                 <NavItem>Events</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/campaigns">
+                <NavItem>Campaigns</NavItem>
+              </LinkContainer>
+              <LinkContainer
+                to={`/users/${JSON.parse(sessionStorage.getItem('user')).id}/campaigns`}
+              >
+                <NavItem>My Campaigns</NavItem>
               </LinkContainer>
               {sessionStorage.getItem('user') && (
                 <NavItem>{JSON.parse(sessionStorage.getItem('user')).uid}</NavItem>
